@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chama-deployment
+  labels:
+    app: chama
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chama
+  template:
+    metadata:
+      labels:
+        app: chama
+    spec:
+      containers:
+      - name: chama
+        image: chama:1.0.0
+        env:
+        - name: CLIENTES_URL
+          value: http://clientes-service:8000

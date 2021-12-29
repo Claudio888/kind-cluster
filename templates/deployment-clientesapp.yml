@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clientes-deployment
+  labels:
+    app: clientes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clientes
+  template:
+    metadata:
+      labels:
+        app: clientes
+    spec:
+      containers:
+      - name: clientes
+        image: clientes:1.0.0

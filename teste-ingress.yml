@@ -1,0 +1,80 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: clientesapp
+  labels:
+    app: clientesapp
+spec:
+  containers:
+  - name: clientesapp
+    image: clientesapp:latest
+    imagePullPolicy: Never
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: clientesapp-service
+spec:
+  selector:
+    app: clientesapp
+  ports:
+  # Default port used by the image
+  - port: 8000
+---
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: chamaclientesapp
+  labels:
+    app: chamaclientesapp
+spec:
+  containers:
+  - name: chamaclientesapp
+    image: chamaclientesapp:latest
+    imagePullPolicy: Never
+    env:
+    - name: CLIENTES_URL
+      value: http://clientesapp-service:8000
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: chamaclientesapp-service
+spec:
+  selector:
+    app: chamaclientesapp
+  ports:
+  # Default port used by the image
+  - port: 8000
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: clientesapp-ingress
+spec:
+  rules:
+   - host: "clientesapp.local"
+     http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: clientesapp-service
+            port:
+              number: 8000
+   - host: "chama.local"
+     http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: chamaclientesapp-service
+            port:
+              number: 8000
+
