@@ -302,7 +302,7 @@ ERROR: unknown flag: --name
 Este erro, ocorreu porque coloquei o parametro como "docker-images" quando é "docker-image" sem o S, ele erroneamente acusa a flag --name, que esta correta, afinal é obrigatoria nesta opção pois é necessario pasasr o nome do cluster que sera enviada as imagens. 
 
 <p align="center">
-  <img width="800" height="250" src="imagens/kind-load.png">
+  <img width="800" height="250" src="imagens/kind-load.gif">
 </p>
 
 Após fazer o upload das imagens no cluster, provavelmente vamos conseguir com a aplicação dos tamplates, mas antes de voltar a ele, segue abaixo um artigo que comenta a respeito do uso da tag **latest** nas imagens utilizadas para deployment com kind. 
