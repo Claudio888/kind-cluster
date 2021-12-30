@@ -93,7 +93,7 @@ kind get clusters
 ```
 
 <p align="center">
-  <img width="800" height="250" src="imagens/kind-create-cluster.gif">
+  <img src="imagens/kind-create-cluster.gif">
 </p>
 
 ### Configurando o ingress controller
@@ -111,7 +111,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main
 Em seguida, esperamos o ingress-nginx-controller ficar com o status ready para continuarmos. 
 
 <p align="center">
-  <img width="800" height="250" src="imagens/ingress-nginx.gif">
+  <img src="imagens/ingress-nginx.gif">
 </p>
 
 ### Imagens para deployment
@@ -139,7 +139,7 @@ docker images
 ```
 
 <p align="center">
-  <img width="800" height="250" src="imagens/docker-build.gif">
+  <img src="imagens/docker-build.gif">
 </p>
 
 Com as imagens construidas, podemos então seguir para a criação dos templates de recursos k8s.
@@ -302,7 +302,7 @@ ERROR: unknown flag: --name
 Este erro, ocorreu porque coloquei o parametro como "docker-images" quando é "docker-image" sem o S, ele erroneamente acusa a flag --name, que esta correta, afinal é obrigatoria nesta opção pois é necessario pasasr o nome do cluster que sera enviada as imagens. 
 
 <p align="center">
-  <img width="800" height="250" src="imagens/kind-load.gif">
+  <img src="imagens/kind-load.gif">
 </p>
 
 Após fazer o upload das imagens no cluster, provavelmente vamos conseguir com a aplicação dos tamplates, mas antes de voltar a ele, segue abaixo um artigo que comenta a respeito do uso da tag **latest** nas imagens utilizadas para deployment com kind. 
@@ -322,7 +322,7 @@ kubectl delete -f ./templates/
 ```
 
 <p align="center">
-  <img width="800" height="250" src="imagens/kubectl-delete.gif">
+  <img src="imagens/kubectl-delete.gif">
 </p>
 
 Em seguida aplicaremos novamente e verificaremos se os recursos foram criados corretamente. 
@@ -339,7 +339,7 @@ kubectl logs <nome do pod>
 ```
 
 <p align="center">
-  <img width="800" height="250" src="imagens/kubectl-apply.gif">
+  <img src="imagens/kubectl-apply.gif">
 </p>
 
 Desta forma aplicamos nossos templates e vimos que a aplicação esta UP, hora de testar.
@@ -354,7 +354,7 @@ A chamada abaixo, deve trazer uma lista simples com alguns clientes do aplicativ
 curl http://clientes.local/clientes
 ```
 <p align="center">
-  <img width="800" height="250" src="imagens/teste-clientes.gif">
+  <img src="imagens/teste-clientes.gif">
 </p>
 
 A chamada abaixo, deve trazer os mesmo clientes, porém veja, que estamos chamado a aplicação **chama**, que tem um service da aplicação **clientes** como variavel de ambiente e faz uma requisição para esta outra aplicação. 
@@ -364,7 +364,7 @@ curl http://chama.local/getclientes
 ```
 
 <p align="center">
-  <img width="800" height="250" src="imagens/teste-chama.gif">
+  <img src="imagens/teste-chama.gif">
 </p>
 
 Vimos então que as aplicações estão UP e funcionais, fazendo chamadas para elas 
@@ -381,7 +381,7 @@ Temos então de encontrar o kubeconfig criado pelo kind, que geralmente fica em 
 De um cat e copie as informações do config na campo do lens e clique em add cluster
 
 <p align="center">
-  <img width="800" height="700" src="imagens/lens2.gif">
+  <img width="900" height="600" src="imagens/lens2.gif">
 </p>
 
 Desta forma, estará com o cluster configurado e conectado no Lens, e lá pode fazer scale de pods, e obeter diversas informações a respeito do cluster. 
