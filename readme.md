@@ -264,7 +264,7 @@ kubectl get service
 No momento, podemos ver que tivemos um problema com os nosso pods, estão com uma mensagem genérica de "ImagePullBackOff", que indica algum erro ao pegar a imagem. 
 
 <p align="center">
-  <img  src="imagens/apply-imagerr.png">
+  <img  src="imagens/apply-imgerr.gif">
 </p>
 
 Podemos então, debugar o pod, utilizando o comando describe, que não só debuga o pod mas como varios outros objetos no k8s, é sempre util para verificarmos se algo esta com erro e se sim descobrir o porque, então vamos lá, vamos verificar o porque o pod esta com este erro, execute: 
@@ -274,7 +274,7 @@ kubectl describe pod <nome do pod>
 ```
 
 <p align="center">
-  <img src="imagens/apply-describe.png">
+  <img src="imagens/apply-describe.gif">
 </p>
 
 Agora que utilizamos o describe, e verificamos qual o erro, podemos tomar uma ação, algo ocorre com a nossa imagem local, o k8s não esta conseguindo carrega-la pra o pod. A mensagem é meio genérica e nos da a impressão de ser algo de acesso e afins, porém, depois de muito apanhar e lendo o quick start do kind, vi que existe a sessão de [carregar uma imagem para o cluster](https://kind.sigs.k8s.io/docs/user/quick-start/#loading-an-image-into-your-cluster), e esta parte ainda não fizemos. 
